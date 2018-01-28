@@ -52,6 +52,8 @@
 \usetikzlibrary{shapes}
 \usetikzlibrary{graphs}
 \usetikzlibrary{backgrounds}
+\usepackage{pgfplots} % plot graph
+\pgfplotsset{compat=1.15}
 %%%%
 
 %%%% Table %%%%
@@ -219,6 +221,58 @@
     \draw[<-, blue!80] (comp old) to (label.west);
     \draw[<-, blue!80] (comp new) to (label.west);
   \end{tikzpicture}
+\end{frame}
+
+% ==============================================================================
+\begin{frame}
+  \frametitle{Tikzで折れ線グラフ}
+
+  \vspace{1em}
+
+  \begin{figure}
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        height = 7cm,
+        width  = 9cm,
+        xlabel = $S_x$,
+        ylabel = $S_y$,
+        ]
+        \addplot coordinates {
+          (-4,38) (-3,22) (-2,3) (-1,-8) (0,1) (1,-4) (2,-7) (3,-16) (4,-42)
+        };
+        \addlegendentry{label1}
+        \addplot coordinates {
+          (-4,1) (-3,1.5) (-2,2.3) (-1,3.4) (0,5.1) (1,7.7) (2,11.5) (3,17) (4,21)
+        };
+        \addlegendentry{label2}
+      \end{axis}
+    \end{tikzpicture}
+  \end{figure}
+\end{frame}
+
+% ==============================================================================
+\begin{frame}
+  \frametitle{Tikzで棒グラフ}
+
+  \vspace{1em}
+
+  \begin{figure}
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        xbar,
+        enlargelimits = 0.15,
+        symbolic y coords = {Foo,Bar,Baz,Qux,Corge},
+        ytick = data,
+        xlabel = $S_x$
+        ]
+        \addplot[draw=blue] coordinates {
+          (10,Foo) (15,Bar) (5,Baz) (24,Qux) (30,Corge)
+        };
+      \end{axis}
+    \end{tikzpicture}
+  \end{figure}
 \end{frame}
 
 \end{document}
