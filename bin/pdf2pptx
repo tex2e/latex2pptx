@@ -2,6 +2,7 @@
 
 set -e
 
+mkdir -p pages
 rm pages/presen-*.jpg
 convert -density 300 presen.pdf pages/presen-%02d.jpg
 python3 bin/pdf2pptx.py pages presen-note.txt
